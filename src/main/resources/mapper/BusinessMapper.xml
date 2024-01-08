@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hexuan.supermarket.mapper.BusinessMapper">
+
+    <insert id="saveBusinessByUser" parameterType="User">
+        INSERT INTO business (businessId,businessName,businessSex,businessImg,phone,delTag)
+        VALUES (#{userId}, null, null,null, null,null)
+    </insert>
+    <update id="updateBusiness">
+        UPDATE business
+        SET
+            businessName = #{businessName},
+            businessSex = #{businessSex},
+            businessImg = #{businessImg},
+            phone = #{phone}
+        WHERE businessId = #{businessId}
+    </update>
+    <select id="getBusinessById" resultType="com.hexuan.supermarket.entity.Business">
+        SELECT * FROM business WHERE businessId = #{businessId}
+    </select>
+</mapper>

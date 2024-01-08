@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hexuan.supermarket.mapper.CustomerMapper">
+
+    <insert id="saveCustomerByUser" parameterType="User">
+            INSERT INTO customer (customerId,customerName,customerSex,customerImg,phone,delTag)
+            VALUES (#{userId}, null, null,null, null,null)
+    </insert>
+    <update id="updateCustomer" parameterType="customer">
+        UPDATE customer
+        SET
+            customerName = #{customerName},
+            customerSex = #{customerSex},
+            customerImg = #{customerImg},
+            phone = #{phone}
+        WHERE customerId = #{customerId}
+    </update>
+    <select id="getCustomerById" resultType="com.hexuan.supermarket.entity.Customer">
+        SELECT * FROM customer WHERE customerId = #{customerId}
+    </select>
+</mapper>

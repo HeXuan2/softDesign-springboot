@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hexuan.supermarket.mapper.CartMapper">
+
+    <update id="updateCart" parameterType="Cart">
+        update cart
+        set quantity=#{quantity}
+        where itemId=#{itemId} and shopId=#{shopId} and userId=#{userId}
+    </update>
+
+    <delete id="removeCart" parameterType="Cart">
+        delete
+        from cart
+        <where>
+            userId=#{userId} and shopId=#{shopId}
+            <if test="itemId!=null and itemId!=''">
+                and itemId=#{itemId}
+            </if>
+        </where>
+    </delete>
+
+</mapper>

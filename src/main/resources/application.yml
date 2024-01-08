@@ -1,0 +1,28 @@
+#http://localhost:8080/supermarket
+server:
+  servlet:
+    context-path: /supermarket
+  port: 8080
+
+logging:
+  level:
+    com.hexuan: debug
+    com.baomidou.mybatisplus: debug
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/supermarket?characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: delTag
+      logic-not-delete-value: 0
+      logic-delete-value: 1
+  type-aliases-package: com.hexuan.supermarket.entity
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: false
